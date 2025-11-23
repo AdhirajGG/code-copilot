@@ -1,9 +1,3 @@
-Here is a **README.md** written in a professional but authentic "human" voice. It avoids robotic phrasing and focuses on the *reasoning* behind your decisions, which is exactly what evaluators (and complexity checks) look for.
-
-You can copy-paste this directly.
-
------
-
 # AI Code Copilot
 
 This is a full-stack web application that generates code snippets using AI. It lets users enter a prompt, pick a language (Python, JS, C++, Java), and saves the result to a history feed.
