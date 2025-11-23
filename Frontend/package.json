@@ -10,6 +10,7 @@
     "postinstall": "npx prisma generate --schema=./prisma/schema.prisma"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.35.4",
     "@prisma/client": "^6.19.0",
     "lucide-react": "^0.554.0",
     "next": "16.0.3",
