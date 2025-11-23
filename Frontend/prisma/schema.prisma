@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//(Foreign Key) 
+model User {
+  id          Int          @id @default(autoincrement())
+  username    String       @unique
+  generations Generation[]
+}
+
+model Generation {
+  id        Int      @id @default(autoincrement())
+  prompt    String
+  language  String
+  code      String   @db.Text
+  createdAt DateTime @default(now())
+
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
