@@ -1,33 +1,3 @@
-// import { NextResponse } from 'next/server';
-// import { prisma } from '@/lib/prisma';
-
-// export async function GET(request: Request) {
-//   const { searchParams } = new URL(request.url);
-//   const page = parseInt(searchParams.get('page') || '1');
-//   const limit = 5;
-//   const skip = (page - 1) * limit;
-
-//   try {
-//     //paginated [cite: 10, 19]
-//     const history = await prisma.generation.findMany({
-//       skip,
-//       take: limit,
-//       orderBy: { createdAt: 'desc' },
-//     });
-
-//     const total = await prisma.generation.count();
-
-//     return NextResponse.json({
-//       data: history,
-//       totalPages: Math.ceil(total / limit),
-//       currentPage: page,
-//     });
-//   } catch (error) {
-//     return NextResponse.json({ error: 'Fetch failed' }, { status: 500 });
-//   }
-// }
-
-// Frontend/app/api/history/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
@@ -35,16 +5,13 @@ import { auth } from "@clerk/nextjs/server";
 
 export async function GET(request: Request) {
   try {
-    // Get current user via Clerk
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Find our app user
     const appUser = await prisma.user.findUnique({ where: { clerkId: userId } });
     if (!appUser) {
-      // No rows yet for this user -> empty result
       return NextResponse.json({
         data: [],
         totalPages: 0,

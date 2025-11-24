@@ -66,20 +66,24 @@ I could have just stored a "username" string in the `Generation` table, but that
 ```mermaid
 erDiagram
     User ||--o{ Generation : "has many"
+
     User {
         int id PK
-        string username "Unique"
+        string clerkId "Unique Clerk auth ID"
+        string username "Optional, unique"
+        string email "Optional"
+        datetime createdAt "Default: now()"
     }
+
     Generation {
         int id PK
-        int userId FK
-        string code "Stored as Text"
+        int userId FK "References User.id"
+        string prompt
         string language
-        datetime createdAt
+        text code "Stored as @db.Text"
+        datetime createdAt "Default: now()"
     }
-```
 
------
 
 ## API Documentation
 

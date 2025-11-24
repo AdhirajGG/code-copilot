@@ -26,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Client-side providers / auth UI */}
         <Providers>
           <AuthHeader />
           <main>{children}</main>

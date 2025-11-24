@@ -8,7 +8,6 @@ export default function SignInPage() {
     <div className="min-h-screen flex items-center justify-center bg-black p-6">
       <div className="w-full max-w-md">
         <SignIn
-          // use path routing so internal links navigate the URL
           routing="path"
           path="/sign-in"
           appearance={{
@@ -17,7 +16,6 @@ export default function SignInPage() {
             },
           }}
         />
-        {/* fallback link if something goes wrong */}
         <div className="text-center mt-4">
           <span className="text-sm text-gray-400">Don’t have an account? </span>
           <Link href="/sign-up" className="text-sm text-indigo-400 hover:underline">Sign up</Link>

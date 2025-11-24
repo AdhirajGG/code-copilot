@@ -7,11 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//(Foreign Key) 
 model User {
   id          Int          @id @default(autoincrement())
-  username    String       @unique
+  
+  clerkId     String       @unique
+  username    String?      @unique
+  email       String?      
   generations Generation[]
+  createdAt   DateTime     @default(now())
 }
 
 model Generation {
@@ -22,5 +25,8 @@ model Generation {
   createdAt DateTime @default(now())
 
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([userId])
 }

@@ -10,7 +10,6 @@ import java from 'react-syntax-highlighter/dist/esm/languages/hljs/java';
 import { Copy, Loader2, ChevronDown, ChevronUp, Sparkles, X } from 'lucide-react';
 import { colors } from '@/lib/colors';
 
-// register languages
 SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('python', python);
 SyntaxHighlighter.registerLanguage('cpp', cpp);
